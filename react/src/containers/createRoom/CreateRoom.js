@@ -1,32 +1,54 @@
 import React, { useState } from "react";
+import "./createRoom.css";
 import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
 import Button from "@material-ui/core/Button";
 
 const CreateRoom = () => {
-  const [formData, setFormData] = useState({ roomName: "", desc: "" });
+  const [groupFormData, setGroupFormData] = useState({
+    roomName: "",
+    desc: "",
+  });
   return (
-    <>
+    <div id="create-chat">
       <br />
-      <TextField
-        id="room-name"
-        label="Rooms Name"
-        placeholder="Room Name"
-        variant="outlined"
-        value={formData.roomName}
-        onChange={(e) => {
-          setFormData({ ...formData, roomName: e.target.value });
+      <h1>Add Friend</h1>
+      <div
+        className="add-friend-request-send"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
         }}
-      ></TextField>
-      <br />
-      <br />
-      <TextField
-        id="room-desc"
-        label="Rooms description"
-        placeholder="Room desc"
-        variant="outlined"
+      >
+        <input type="text" placeholder="Phone Number" />
+        <button id="send-request">
+          <h1 style={{ margin: "0px" }}>+</h1>
+        </button>
+      </div>
+      <h1>Create Room</h1>
+      <input
+        placeholder="Room Name"
+        value={groupFormData.roomName}
         onChange={(e) => {
-          setFormData({ ...formData, desc: e.target.value });
+          setGroupFormData({ ...groupFormData, roomName: e.target.value });
+        }}
+      />
+      <br />
+      <br />
+      <input
+        placeholder="Room Description"
+        onChange={(e) => {
+          setGroupFormData({ ...groupFormData, desc: e.target.value });
+        }}
+      />
+      <br />
+      <br />
+      <input
+        placeholder="Room Password"
+        onChange={(e) => {
+          setGroupFormData({ ...groupFormData, password: e.target.value });
         }}
       />
       <br />
@@ -34,8 +56,8 @@ const CreateRoom = () => {
       <Button
         onClick={() => {
           Axios.post("http://localhost:3001/api/rooms/create", {
-            name: formData.roomName,
-            description: formData.desc,
+            name: groupFormData.roomName,
+            description: groupFormData.desc,
             creator: localStorage.getItem("_id"),
           })
             .then((data) => {
@@ -49,7 +71,7 @@ const CreateRoom = () => {
       >
         Create
       </Button>
-    </>
+    </div>
   );
 };
 

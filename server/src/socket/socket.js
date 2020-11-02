@@ -34,4 +34,9 @@ exports.Socket = (socket) => {
   socket.on("typing", (roomId, user) => {
     io.to(roomId).emit("typing", user);
   });
+
+  socket.on("disconnecting", () => {
+    const rooms = Object.keys(socket.rooms);
+    console.log(socket);
+  });
 };

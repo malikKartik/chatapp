@@ -3,7 +3,20 @@ import "./card.css";
 
 const Card = (props) => {
   return (
-    <div className="card-comp" onClick={props.onClick}>
+    <div
+      className="card-comp"
+      style={{
+        border:
+          props.selectedChat && props.room._id === props.selectedChat._id
+            ? "1px solid #20b546"
+            : "",
+        borderLeft:
+          props.selectedChat && props.room._id === props.selectedChat._id
+            ? "5px solid #20b546"
+            : "",
+      }}
+      onClick={props.onClick}
+    >
       <div
         style={{
           height: "100%",

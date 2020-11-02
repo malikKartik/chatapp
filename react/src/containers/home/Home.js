@@ -37,7 +37,11 @@ const Home = () => {
         <div className="chat-cards-home-page">
           {chats.map((chat) => {
             return (
-              <Card room={chat} onClick={() => setSelectedChat(chat)}></Card>
+              <Card
+                room={chat}
+                selectedChat={selectedChat}
+                onClick={() => setSelectedChat(chat)}
+              ></Card>
             );
           })}
         </div>

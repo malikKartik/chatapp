@@ -1,0 +1,28 @@
+#create-chat{
+
+}
+
+#create-chat input{
+    height: 40px;
+    width: 200px;
+    border: none;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding-left: 10px;
+}
+#create-chat button#send-request{
+    height: 40px;
+    margin-left: 10px;
+    border: none;
+    background-color: var(--primary);
+    color: var(--primary-text);
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+#create-chat h1{
+    font-weight: 300;
+}
+
+#create-chat h1 span{
+    font-size: 20px;
+}
